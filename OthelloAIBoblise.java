@@ -39,11 +39,9 @@ public class OthelloAIBoblise implements IOthelloAI {
             return bestMove;
         }
 
-        boolean moveFound = false;
         //System.out.println("Max (white) has legal moves: " + actions(s));
         for(Position a : actions(s)) {
             //System.out.println("Max (white) evaluating move: " + a);
-            moveFound = true;
             MoveUtility currentMove = minValue(result(s, a), alpha, beta);
 
             if (currentMove.getUtility() > bestMove.getUtility()) {
