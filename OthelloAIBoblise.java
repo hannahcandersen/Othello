@@ -39,9 +39,11 @@ public class OthelloAIBoblise implements IOthelloAI {
             return bestMove;
         }
 
+        boolean moveFound = false;
         //System.out.println("Max (white) has legal moves: " + actions(s));
         for(Position a : actions(s)) {
             //System.out.println("Max (white) evaluating move: " + a);
+            moveFound = true;
             MoveUtility currentMove = minValue(result(s, a), alpha, beta);
 
             if (currentMove.getUtility() > bestMove.getUtility()) {
@@ -102,7 +104,7 @@ public class OthelloAIBoblise implements IOthelloAI {
      * @return True if the given state is terminal (no more possible moves)
      */
     private boolean isTerminal(GameState s) {
-        return s.isFinished();
+        return s.isFinished() || actions(s).isEmpty();
     }
 
     /**
