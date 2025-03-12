@@ -26,25 +26,23 @@ public class OthelloAIBoblise implements IOthelloAI {
     * @return The move with the highest utility value
     */
     private MoveUtility maxValue(GameState s) {
-        double v = Double.NEGATIVE_INFINITY;
-        MoveUtility moveUtility = new MoveUtility(Double.NEGATIVE_INFINITY, null); 
+        MoveUtility bestMove = new MoveUtility(Double.NEGATIVE_INFINITY, null); 
         
         if (isTerminal(s)) {
-            int util = utility(s);
-            moveUtility.setUtility(util);
-            return moveUtility;
+            bestMove.setUtility(utility(s));
+            return bestMove;
         }
 
         for(Position a : actions(s)) {
-            moveUtility = minValue(result(s, a));
+            MoveUtility currentMove = minValue(result(s, a));
 
-            if (moveUtility.getUtility() > v) {
-                v = moveUtility.getUtility();
-                moveUtility.setMove(a);
+            if (currentMove.getUtility() > bestMove.getUtility()) {
+                bestMove.setUtility(currentMove.getUtility());
+                bestMove.setMove(a);
             }
         }
 
-        return moveUtility;
+        return bestMove;
     }
 
     /**
@@ -53,25 +51,23 @@ public class OthelloAIBoblise implements IOthelloAI {
      * @return The move with the lowest utility value
      */
     private MoveUtility minValue(GameState s) {
-        double v = Double.POSITIVE_INFINITY;
-        MoveUtility moveUtility = new MoveUtility(Double.POSITIVE_INFINITY, null); 
+        MoveUtility bestMove = new MoveUtility(Double.POSITIVE_INFINITY, null); 
         
         if (isTerminal(s)) {
-            int util = utility(s);
-            moveUtility.setUtility(util);
-            return moveUtility;
+            bestMove.setUtility(utility(s));
+            return bestMove;
         }
 
         for(Position a : actions(s)) {
-            moveUtility = maxValue(result(s, a));
+            MoveUtility currentMove = maxValue(result(s, a));
 
-            if (moveUtility.getUtility() < v) {
-                v = moveUtility.getUtility();
-                moveUtility.setMove(a);
+            if (currentMove.getUtility() < bestMove.getUtility()) {
+                bestMove.setUtility(currentMove.getUtility());
+                bestMove.setMove(a);
             }
         }
 
-        return moveUtility;
+        return bestMove;
     }
 
     /**
@@ -109,10 +105,12 @@ public class OthelloAIBoblise implements IOthelloAI {
      * @return The state that results from applying the given move to the given state
      */
     private GameState result(GameState s, Position a) {
-        if (s.insertToken(a)) {
-            return s;
+        GameState newState = new GameState(s.getBoard(), s.getPlayerInTurn());
+        if (newState.insertToken(a)) {
+            return newState;
         } else {
-            return null; // Should never happen as the move is always be legal
+            System.out.println("Error: Illegal move");
+            return s; // Should never happen as the move is always legal
         }
     }
 }

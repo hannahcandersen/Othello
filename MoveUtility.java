@@ -1,6 +1,6 @@
 public class MoveUtility {
-    double utility;
-    Position move;
+    private double utility;
+    private Position move;
 
     public MoveUtility(double utility, Position move) {
         this.utility = utility;
@@ -15,7 +15,7 @@ public class MoveUtility {
         return move;
     }
 
-    public void setUtility(int utility) {
+    public void setUtility(double utility) {
         this.utility = utility;
     }
 
