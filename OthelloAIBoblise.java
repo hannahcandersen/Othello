@@ -144,7 +144,7 @@ public class OthelloAIBoblise implements IOthelloAI {
 
 
 /* STEPS
- * Minimax algorithm
- * Minimax with alpha-beta pruning
+ * Minimax algorithm - Done
+ * Minimax with alpha-beta pruning - Done
  * Heuritic-Alpha-Beta-Search
  */
