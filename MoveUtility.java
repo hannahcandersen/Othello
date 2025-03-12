@@ -1,13 +1,13 @@
 public class MoveUtility {
-    int utility;
-    Position move;
+    private double utility;
+    private Position move;
 
-    public MoveUtility(int utility, Position move) {
+    public MoveUtility(double utility, Position move) {
         this.utility = utility;
         this.move = move;
     }
 
-    public int getUtility() {
+    public double getUtility() {
         return utility;
     }
 
@@ -15,7 +15,7 @@ public class MoveUtility {
         return move;
     }
 
-    public void setUtility(int utility) {
+    public void setUtility(double utility) {
         this.utility = utility;
     }
 
