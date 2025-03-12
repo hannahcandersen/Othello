@@ -102,7 +102,7 @@ public class OthelloAIBoblise implements IOthelloAI {
      * @return True if the given state is terminal (no more possible moves)
      */
     private boolean isTerminal(GameState s) {
-        return s.isFinished();
+        return s.isFinished() || actions(s).isEmpty();
     }
 
     /**
@@ -144,7 +144,7 @@ public class OthelloAIBoblise implements IOthelloAI {
 
 
 /* STEPS
- * Minimax algorithm
- * Minimax with alpha-beta pruning
+ * Minimax algorithm - Done
+ * Minimax with alpha-beta pruning - Done
  * Heuritic-Alpha-Beta-Search
  */
