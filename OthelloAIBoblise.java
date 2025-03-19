@@ -18,8 +18,11 @@ public class OthelloAIBoblise implements IOthelloAI {
      */
     @Override
     public Position decideMove(GameState s){
+        long startTime = System.currentTimeMillis();
         MoveUtility bestMove = maxValue(s, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
+        long endTime = System.currentTimeMillis();
         System.out.println("Boblise decided to place token at: " + bestMove.getMove() + " with utility value: " + bestMove.getUtility());
+        System.out.println("Time to find move: " + (endTime - startTime) + " milliseconds"); 
         return bestMove.getMove();
     }
 
