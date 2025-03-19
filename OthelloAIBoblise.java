@@ -2,6 +2,8 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * AI bot "Boblise" for Othello, implemented using minimax algorithm
@@ -10,6 +12,9 @@ import java.util.Set;
  * @author Hannah Camilla Andersen and Turið Højgaard
  */
 public class OthelloAIBoblise implements IOthelloAI {
+
+    private static int moveCount = 1; 
+    private static final String TIMES = "time_to_find_move.txt";
     
     /**
      * Calculates the optimal move for Boblise given current game state.
@@ -18,11 +23,16 @@ public class OthelloAIBoblise implements IOthelloAI {
      */
     @Override
     public Position decideMove(GameState s){
+        // Decide move
         long startTime = System.currentTimeMillis();
         MoveUtility bestMove = maxValue(s, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
         long endTime = System.currentTimeMillis();
         System.out.println("Boblise decided to place token at: " + bestMove.getMove() + " with utility value: " + bestMove.getUtility());
-        System.out.println("Time to find move: " + (endTime - startTime) + " milliseconds"); 
+
+        // Write time to file
+        writeTimeToFile(endTime - startTime);
+        moveCount++;
+
         return bestMove.getMove();
     }
 
@@ -143,7 +153,29 @@ public class OthelloAIBoblise implements IOthelloAI {
             return s; // Should never happen as the move is always legal
         }
     }
+
+    /**
+     * Writes the time it took to find the move to file "time_to_find_move.txt"
+     * @param time
+     */
+    private void writeTimeToFile(long time) {
+        try {
+            FileWriter writer;
+            if (moveCount == 1) {
+                writer = new FileWriter(TIMES); // Override file if it exists already
+            }
+            else {
+                writer = new FileWriter(TIMES, true);
+            }
+            writer.write("Time to decide move " + moveCount + ": " + time + " ms\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error writing time to file");
+            e.printStackTrace();
+        }
+    }
 }
+
 
 
 /* STEPS
