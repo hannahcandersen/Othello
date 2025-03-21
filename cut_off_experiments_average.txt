@@ -1,0 +1,38 @@
+Max depth 1 - Won game
+Average - First 10 moves: 1 ms (0.0 s)
+Average - All moves: 0.48 ms (0.0 s)
+
+Max depth 2 - Won game
+Average - First 10 moves: 2.2 ms (0.0 s)
+Average - All moves: 1.17 ms (0.0 s)
+
+Max depth 3 - Lost game
+Average - First 10 moves: 3.9 ms (0.0 s)
+Average - All moves: 2.5 ms (0.0 s)
+
+Max depth 4 - Won game
+Average - First 10 moves: 13.9 ms (0.01 s)
+Average - All moves: 11.0 ms (0.01 s)
+
+Max depth 5 - Won game
+Average - First 10 moves: 36.9 ms (0.04 s)
+Average - All moves: 22.23 ms (0.02 s)
+
+Max depth 6 - Won game
+Average - First 10 moves: 132.8 ms (0.13 s)
+Average - All moves: 170.6 ms (0.17 s)
+
+Max depth 7 - Won game
+Average - First 10 moves: 544.7 ms (0.54 s)
+Average - All moves: 324.37 ms (0.32 s)
+
+Max depth 8 - Won game
+Average - First 10 moves: 4318.3 ms (4.32 s)
+Average - All moves: 3232.17 ms (3.23 s)
+
+Max depth 9 - Won game
+Average - First 10 moves: 9431.5 ms (9.43 s)
+Average - All moves: 8697.5 ms (8.7 s)
+
+Max depth 10 - Crashed
+Average - All moves: 51688.63 ms (51.69 s)
